@@ -1,7 +1,6 @@
 import glob
 import os
 import io
-import string
 
 
 def main():
