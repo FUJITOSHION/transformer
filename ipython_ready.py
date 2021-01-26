@@ -15,12 +15,25 @@ from torchtext.vocab import Vectors
 class GetDataLoader():
     def __call__(self):
         self.make_data_folder()
-        self.get_imdb()
-        self.open_tar()
-        self.data_to_tsv()
-        dl_dict, TEXT = self.make_ds_dl()
+        self.display_print('finish make folder')
 
+        self.get_imdb()
+        self.display_print('get imdb')
+
+        self.open_tar()
+        self.display_print('open tar file')
+
+        self.data_to_tsv()
+        self.display_print('to tsv')
+
+        dl_dict, TEXT = self.make_ds_dl()
+        self.display_print('finish dataloader')
         return dl_dict, TEXT
+
+    def display_print(self, word: str):
+        print('-'*15)
+        print(word)
+        print('-'*15)
 
     def make_data_folder(self):
         data_dir = "./data/"
@@ -121,10 +134,13 @@ class GetDataLoader():
 
         self.fasteText()
         english_word_to_vector = Vectors(name='data/wiki-news-300d-1M.vec')
-        TEXT.build_vocab(train_ds, vectors=english_word_to_vector, min_freq=5)
+        TEXT.build_vocab(
+            train_ds, vectors=english_word_to_vector, min_freq=10)
 
         train_dl = torchtext.data.Iterator(
-            train_ds, batch_size=32, train=True, shuffle=True)
+            train_ds, batch_size=32, train=True)
+        # train_dl = torchtext.data.Iterator(
+        #     train_ds, batch_size=32, train=True, shuffle=True
 
         val_dl = torchtext.data.Iterator(
             val_ds, batch_size=32, train=False, sort=False)

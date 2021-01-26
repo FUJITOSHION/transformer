@@ -4,14 +4,13 @@ import random
 import os
 import urllib.request
 import zipfile
-import tarfile
 
 import torchtext
 from torchtext.vocab import Vectors
 
 
 def fasteText():
-    url = "https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip"
+    url = "https://dl.fbaipublicfiles.com/fasttext/vectors-english/wiki-news-300d-1M.vec.zip"  # nopep
     save_path = "./data/wiki-news-300d-1M.vec.zip"
     if not os.path.exists(save_path):
         urllib.request.urlretrieve(url, save_path)
