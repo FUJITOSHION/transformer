@@ -16,7 +16,7 @@ def open_tar():
     tar.close()
 
 
-def main():
+def get_imdb():
     make_data_folder()
     url = 'http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz'
 
@@ -28,4 +28,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    get_imdb()

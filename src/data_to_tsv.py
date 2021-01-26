@@ -3,7 +3,7 @@ import os
 import io
 
 
-def main():
+def get_data():
     train_test = ['train', 'test']
     data_dict = {'1': 'pos', '0': 'neg'}
     for i in train_test:
@@ -24,4 +24,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    get_data()
