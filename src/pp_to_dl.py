@@ -88,10 +88,6 @@ def get_dl():
     test_dl = torchtext.data.Iterator(
         test_ds, batch_size=32, train=False, sort=False)
 
-    batch = next(iter(val_dl))
-    print(batch.Text)
-    print(batch.Label)
-
     dl_dict = {'train': train_dl, 'val': val_dl, 'test': test_dl}
 
     return dl_dict, TEXT
